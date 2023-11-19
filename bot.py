@@ -36,15 +36,17 @@ def find_links(tweet):
 #buscar os últimos tweets do RSS
 def get_latest_tweets(feed_url):
     feed = feedparser.parse(feed_url)
-    tweets = []
+    #tweets = []
+    tweets = set()
 
     for entry in feed.entries:
         #remover links do tweet
         text = entry.title
         all_links = find_links(text)
-        text = text.replace(all_links[-1], '')
+        if all_links and len(all_links) > 1:
+            text = text.replace(all_links[-1], '')
         text = text.replace("\n\n", "\n")
-        tweets.append(text)
+        tweets.add(text)
 
     return tweets
 
