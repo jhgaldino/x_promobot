@@ -64,14 +64,14 @@ async def check_tweets():
             if tweet not in last_tweets_sent:
                 new_tweets.append(tweet)
     except Exception as e:
-        print(f'Erro ao verificar tweets: {str(e)}')
+        print(f'Erro ao verificar promoções: {str(e)}')
     #adicionar novos tweets na lista de tweets enviados
     last_tweets_sent.extend(new_tweets)
     return new_tweets
 
 
-#verificar novos tweets a cada hora
-@tasks.loop(minutes=60)
+#verificar novos tweets a cada 30 minutos
+@tasks.loop(minutes=30)
 async def tweet_task():
     if not last_ctx:
         return
@@ -92,7 +92,7 @@ async def last_tweets(ctx):
     last_ctx = ctx
     new_tweets = await check_tweets()
     if not new_tweets:
-        await ctx.send('Não há novos tweets')
+        await ctx.send('Não há novas promoções')
         return
     for tweet in new_tweets:
         await ctx.send(tweet)
