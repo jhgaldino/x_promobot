@@ -89,6 +89,7 @@ async def on_ready():
 #verificar os últimos tweets do RSS
 @bot.command("last_tweets")
 async def last_tweets(ctx):
+    global last_ctx
     last_ctx = ctx
     new_tweets = await check_tweets()
     if not new_tweets:
