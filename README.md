@@ -1,12 +1,12 @@
 # x_promobot
-Um bot do Discord agregador de feeds RSS.
+Um bot do Discord agregador de feeds RSS.<br>
 
-Configurando o Bot
-Antes de usar o bot, você precisa configurá-lo corretamente. Siga os passos abaixo:
+Configurando o Bot<br>
+Antes de usar o bot, você precisa configurá-lo corretamente. Siga os passos abaixo:<br>
 
-Baixe o Código Fonte
+Baixe o Código Fonte<br>
 
-Clone ou baixe o código-fonte deste repositório em sua máquina.
+Clone ou baixe o código-fonte deste repositório em sua máquina.<br>
 
 Crie um Bot no Portal do Desenvolvedor do Discord<br>
 Acesse o Portal do Desenvolvedor do Discord.<br>
@@ -21,7 +21,7 @@ Copie o URL gerado e cole-o em um navegador da web. Isso abrirá uma página ond
 Configurando o Ambiente Virtual Python<br>
 Abra o terminal ou prompt de comando e navegue até a pasta onde você baixou o código do bot.<br>
 Crie um ambiente virtual Python para este projeto (caso não tenha um ambiente virtual configurado):<br>
-python -m venv venv
+python -m venv venv<br>
 Ative o ambiente virtual:<br>
 No Windows:<br>
 venv\Scripts\activate <br>
