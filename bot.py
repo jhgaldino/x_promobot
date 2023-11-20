@@ -80,6 +80,13 @@ async def tweet_task():
         for tweet in new_tweets:
             await last_ctx.send(tweet)
 
+#funcao para suprimir o erro de comando nao encontrado
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        return
+    raise error
+
 
 @bot.event
 async def on_ready():
