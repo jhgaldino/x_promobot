@@ -35,7 +35,7 @@ No Windows:<br>
 venv\Scripts\activate.bat
 ```
 <details>
-<summary>observacao</summary> caso voce tenha o powershell instalado no windows 10 ou esteje com o windows 11, use o comando 
+<summary>observação</summary> caso voce tenha o powershell instalado no windows 10 ou esteje com o windows 11, use o comando 
 
 ```
 venv\Scripts\activate.ps1
