@@ -1,9 +1,9 @@
+import os
+import re
+import feedparser
+from dotenv import load_dotenv
 import discord
 from discord.ext import commands, tasks
-import feedparser
-import os
-from dotenv import load_dotenv
-import re
 
 # Configurar as intenções
 intents = discord.Intents.default()
@@ -36,17 +36,22 @@ def find_links(tweet):
 #buscar os últimos tweets do RSS
 def get_latest_tweets(feed_url):
     feed = feedparser.parse(feed_url)
-    #tweets = []
-    tweets = set()
+    tweets = []
 
     for entry in feed.entries:
-        #remover links do tweet
+        # o title do RSS é o texto do tweet
         text = entry.title
+        # encontrar todos os links do tweet
         all_links = find_links(text)
-        if all_links and len(all_links) > 1:
-            text = text.replace(all_links[-1], '')
+        # se nao houver links, pular o tweet
+        if not len(all_links) > 1:
+            continue
+        # remover o link de referencia do proprio tweet
+        text = text.replace(all_links[-1], '')
+        # remover as quebras de linhas duplicadas
         text = text.replace("\n\n", "\n")
-        tweets.add(text)
+        # adicionar o texto do tweet na lista de tweets
+        tweets.append(text)
 
     return tweets
 
@@ -94,7 +99,7 @@ async def on_ready():
     tweet_task.start()
 
 #verificar os últimos tweets do RSS
-@bot.command("last_tweets")
+@bot.command("twt")
 async def last_tweets(ctx):
     global last_ctx
     last_ctx = ctx
